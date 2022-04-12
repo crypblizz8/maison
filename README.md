@@ -1,34 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Privy Quickstart Project
 
-## Getting Started
+This sample Next.js project is designed to help you hit the ground running with Privy's API. To run this project, you'll need the following:
 
-First, run the development server:
+* A MetaMask account and the [MetaMask browser extension](https://metamask.io/download/). 
+* A Privy account. Email hi@privy.io if you don't have one yet. 
 
-```bash
-npm run dev
-# or
-yarn dev
+## Setting up the Privy Schema
+
+In this sample project, we will collect two simple pieces of user data: their name and their favorite color. In your Privy console, create two fields: one called "first-name" and the second called "fav-color". For both, give read and write permissions to the "Self" and "Admin" roles. 
+
+## Get your Privy API Keys
+
+Head over to the "API Settings" section of the console. If you don't already have a Privy API key and secret, hit "Roll Keys" to generate a new pair. Copy down the API secret somewhere safe! If you lose it you'll have to generate a new API Key. 
+
+Create a .env file in this repository and paste in the following code. Replace the TODOs with your API key and secret. 
 ```
+PRIVY_API_KEY=TODO
+PRIVY_API_SECRET=TODO
+```
+
+## Build and run the dev server
+
+That's it! You're ready to build and run the sample project. Run ```npm install``` to install the project dependencies. Then, use ```npm run dev``` or ```yarn dev``` to run the development server. 
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Use the app! 
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+In your browser, you should see a "Connect with MetaMask" button. Go ahead and sign in with MetaMask. Once you do, you'll see a simple page that asks for your name and favorite color. Once you submit that information, head over to the "View Data" section of the Privy console. You'll see that the data has been added! 
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Back in your browser, you'll also see that if you submitted a valid color, the app background has been personalized to that color. Now, even if you stop the dev server and re-run it, logging in with the same MetaMask account will fetch these preferences from Privy and personalize the app.
 
-## Learn More
+## Poke around the code
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Feel free to mess around and experiment! There are three files that are relevant:
+* pages/index.js -- contains the front-end code
+* pages/api/auth.js -- contains the back-end auth code
+* .env -- has Privy API key and secret
