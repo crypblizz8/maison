@@ -1,38 +1,30 @@
+import PrivyNode from "@privy-io/node";
 require('dotenv').config()
 
+
 /* 
-  The frontend client will hit this endpoint and request a Privy access token. Here, you can use 
+  The frontend client will hit this endpoint to request a Privy access token. Here, you can use 
   your own authentication and authorization logic to determine whether access should be granted and 
   with what roles/scopes.
 */
 export default async (req, res) => {
 
-  // TODO: add your own authentication logic! We've ommitted it in the sample. 
+  // TODO: Is this request to your backend legit? BYO authentication logic/middleware. We've ommited it in the sample. 
 
-  // In this sample, the data requester is the end user themselves (via the client).
+  // Initialize the PrivyNode client with your API key and secret
+  const privyNode = new PrivyNode(process.env.PRIVY_API_KEY, process.env.PRIVY_API_SECRET);
+
+  // TODO: What are the requester's identity and roles? BYO authorization logic. We've hardcorded it in the sample. 
   const requesterId = req.headers.userid; 
-
-  // TODO: add your authorization logic to determine what roles this requestor should get! We've hardcoded it to "admin" in the sample. 
   const requesterRoles = ['admin'];
-  
-  const privyResponse = await fetch("https://api.privy.io/v0/auth/token", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      // /auth/token endpoint uses basic auth using the API key/secret which are stored in a .env file
-      Authorization: `Basic ${Buffer.from(
-        process.env.PRIVY_API_KEY + ":" + process.env.PRIVY_API_SECRET
-      ).toString("base64")}`,
-    },
-    body: JSON.stringify({ requester_id: requesterId, roles: requesterRoles }),
-  });
 
-  const { error, token } = await privyResponse.json();
-
-  if (error) {
+  // Generate a Privy access token!
+  try {
+    const token = await privyNode.createAccessToken(requesterId, requesterRoles);
+    res.status(200).send({ token });
+  } catch(error) {
     res.status(500).send({ error });
-    return;
   }
-
-  res.status(200).send({ token });
 }
+
+
