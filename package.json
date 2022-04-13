@@ -9,12 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@privy-io/node": "^0.0.2",
+    "@privy-io/node": "^0.0.3",
     "dotenv": "^16.0.0",
     "install": "^0.13.0",
     "next": "12.1.4",
     "npm": "^8.6.0",
-    "privy-js": "^0.0.5",
+    "privy-js": "^0.0.6",
     "react": "18.0.0",
     "react-dom": "18.0.0"
   },

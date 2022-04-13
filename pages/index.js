@@ -108,22 +108,24 @@ export default function Home() {
             </h1>
             <div style={{marginTop:'40px'}}>
               <table style={{margin:'auto', textAlign:'right'}}>
-                <tr>
-                  <td>
-                    Your name?
-                  </td>
-                  <td style={{paddingLeft:'10px'}} >
-                    <input onChange={(event) => {setNameInput(event.target.value)}} value={nameInput}/>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    Favorite color? 
-                  </td>
-                  <td style={{paddingLeft:'10px'}}>
-                    <input onChange={(event) => {setColorInput(event.target.value)}} value={colorInput}/>
-                  </td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <td>
+                      Your name?
+                    </td>
+                    <td style={{paddingLeft:'10px'}} >
+                      <input onChange={(event) => {setNameInput(event.target.value)}} value={nameInput}/>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Favorite color? 
+                    </td>
+                    <td style={{paddingLeft:'10px'}}>
+                      <input onChange={(event) => {setColorInput(event.target.value)}} value={colorInput}/>
+                    </td>
+                  </tr>
+                </tbody>
               </table>
               <button style={{marginTop:'20px'}} onClick={submitDataToPrivy}>Save with Privy</button>
             </div>
