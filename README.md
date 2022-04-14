@@ -23,11 +23,19 @@ PRIVY_API_KEY=TODO
 PRIVY_API_SECRET=TODO
 ```
 
+(no need for quotation marks)
+
 ## Build and run the dev server ⚒️
 
 That's it! You're ready to build and run the sample project. Run ```npm install``` to install the project dependencies. Then, use ```npm run dev``` or ```yarn dev``` to run the development server. 
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+### Troubleshooting
+
+**My app fails to start because of a Next.js `SWC binary` issue**
+- Delete the `package-lock.json` file and `the node_modules` directory in your project
+- Run `npm install` again and try restarting your app.
 
 ## Use the app! 
 

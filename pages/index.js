@@ -9,6 +9,7 @@ export default function Home() {
   // Use React's useState hook to keep track of the signed in Ethereum address and input field values
   const [ethAddress, setEthAddress] = useState("");
   const [nameInput, setNameInput] = useState("");
+  const [displayName, setDisplayName] = useState("");
   const [colorInput, setColorInput] = useState("");
 
   // Initialize the Privy client. The /api/auth endpoint is defined under pages > api > auth.js
@@ -50,6 +51,7 @@ export default function Home() {
         const fetchData = await privyData.fetchData(address, 'first-name');        
         if(fetchData.length !== 0) {
           setNameInput(fetchData[0].data)
+          setDisplayName(fetchData[0].data)
         }
 
         // Fetch user's favorite color from Privy
@@ -94,6 +96,7 @@ export default function Home() {
       }
     ]);
 
+    setDisplayName(nameInput);
     document.body.style = 'background: ' + colorInput + ';';
   }
 
@@ -104,7 +107,7 @@ export default function Home() {
         {ethAddress && ( 
           <div>
             <h1>
-               Hey {nameInput ? nameInput : "there"} 👋 
+               Hey {displayName ? displayName : ethAddress.substring(0, 5) + "..." + ethAddress.substring(ethAddress.length - 4) } 👋 
             </h1>
             <div style={{marginTop:'40px'}}>
               <table style={{margin:'auto', textAlign:'right'}}>
