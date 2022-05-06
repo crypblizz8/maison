@@ -17,7 +17,8 @@ For both, give read and write permissions to the "Self" and "Admin" roles.
 
 Head over to the "API Settings" section of the console. If you don't already have a Privy API key and secret, hit "Roll Keys" to generate a new pair. Copy down the API secret somewhere safe! If you lose it you'll have to generate a new API key. 
 
-Create a .env file in this repository and paste in the following code. Replace the TODOs with your API key and secret from the console.
+Create a `.env.local` file in this repository copied from `.env.local.example` and replace the TODOs with your API key and secret from the console.
+
 ```
 PRIVY_API_KEY=TODO
 PRIVY_API_SECRET=TODO
@@ -25,7 +26,7 @@ PRIVY_API_SECRET=TODO
 
 ## Build and run the dev server ⚒️
 
-That's it! You're ready to build and run the sample project. Run ```npm install``` to install the project dependencies. Then, use ```npm run dev``` or ```yarn dev``` to run the development server. 
+That's it! You're ready to build and run the sample project. Run ```npm install``` to install the project dependencies. Then, use ```npm run dev``` to run the development server. 
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
@@ -42,4 +43,4 @@ Back in your browser, you'll also see that if you submitted a valid color, the a
 Feel free to mess around and experiment! There are three files that are relevant:
 * pages/index.js -- contains the front-end code
 * pages/api/auth.js -- contains the back-end auth code
-* .env -- has Privy API key and secret
+* .env.local -- has Privy API key and secret
