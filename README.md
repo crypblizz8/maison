@@ -22,11 +22,12 @@ Create a `.env.local` file in this repository copied from `.env.local.example` a
 ```
 PRIVY_API_KEY=TODO
 PRIVY_API_SECRET=TODO
+NEXT_PUBLIC_PRIVY_API_KEY=$PRIVY_API_KEY
 ```
 
 ## Build and run the dev server ⚒️
 
-That's it! You're ready to build and run the sample project. Run ```npm install``` to install the project dependencies. Then, use ```npm run dev``` to run the development server. 
+That's it! You're ready to build and run the sample project. Run `npm install` to install the project dependencies. Then, use `npm run dev` to run the development server. 
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
