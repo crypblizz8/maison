@@ -9,14 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@privy-io/node": "^0.0.3",
-    "dotenv": "^16.0.0",
-    "install": "^0.13.0",
-    "next": "12.1.4",
-    "npm": "^8.6.0",
-    "privy-js": "^0.0.6",
-    "react": "18.0.0",
-    "react-dom": "18.0.0"
+    "@privy-io/privy-browser": "^0.0.1-beta.1",
+    "@privy-io/privy-node": "^0.0.1-beta.1",
+    "next": "latest",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   },
   "devDependencies": {
     "eslint": "8.12.0",
