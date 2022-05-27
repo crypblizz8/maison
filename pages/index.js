@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import PrivyClient, { SiweSession } from '@privy-io/privy-js'
+import { PrivyClient, SiweSession } from '@privy-io/privy-browser'
 import Head from 'next/head';
 
 // Initialize the Privy client.

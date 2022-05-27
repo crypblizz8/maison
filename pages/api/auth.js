@@ -1,4 +1,4 @@
-import PrivyNode from "@privy-io/node";
+import PrivyNode from "@privy-io/privy-node";
 
 /* 
   The frontend client will hit this endpoint to request a Privy access token. Here, you can use 
