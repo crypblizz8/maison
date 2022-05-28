@@ -15,14 +15,12 @@ For both, give read and write permissions to the "Self" and "Admin" roles.
 
 ## Get your Privy API Keys 🔑
 
-Head over to the "API Settings" section of the console. If you don't already have a Privy API key and secret, hit "Roll Keys" to generate a new pair. Copy down the API secret somewhere safe! If you lose it you'll have to generate a new API key. 
+Head over to the "API Settings" section of the console. If you don't already have a Privy API key, hit "Roll Keys" to generate a new pair. We don't need the API secret for this demo, but if you anticipate needing it later, copy down the API secret somewhere safe. If you lose it you'll have to generate a new API key.
 
-Create a `.env.local` file in this repository copied from `.env.local.example` and replace the TODOs with your API key and secret from the console.
+Create a `.env.local` file in this repository copied from `.env.local.example` and replace the TODO with your API key from the console.
 
 ```
-PRIVY_API_KEY=TODO
-PRIVY_API_SECRET=TODO
-NEXT_PUBLIC_PRIVY_API_KEY=$PRIVY_API_KEY
+NEXT_PUBLIC_PRIVY_API_KEY=TODO
 ```
 
 ## Build and run the dev server ⚒️
@@ -41,7 +39,6 @@ Back in your browser, you'll also see that if you submitted a valid color, the a
 
 ## Poke around the code 🤓
 
-Feel free to mess around and experiment! There are three files that are relevant:
+Feel free to mess around and experiment! There are two files that are relevant:
 * pages/index.js -- contains the front-end code
-* pages/api/auth.js -- contains the back-end auth code
-* .env.local -- has Privy API key and secret
+* .env.local -- has your Privy API key
