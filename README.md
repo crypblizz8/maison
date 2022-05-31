@@ -29,6 +29,12 @@ That's it! You're ready to build and run the sample project. Run `npm install` t
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+### Troubleshooting
+
+**My app fails to start because of a Next.js `SWC binary` issue**
+- Delete the `package-lock.json` file and `the node_modules` directory in your project
+- Run `npm install` again and try restarting your app.
+
 ## Use the app! 
 
 In your browser, you should see a "Connect with MetaMask" button. Go ahead and sign in with MetaMask. Once you do, you'll see a simple page that asks for your name and favorite color.
@@ -36,6 +42,8 @@ In your browser, you should see a "Connect with MetaMask" button. Go ahead and s
 Once you submit that information, head over to the "View Data" section of the Privy console. You'll see that the data has been added! 
 
 Back in your browser, you'll also see that if you submitted a valid color, the app background has been personalized to that color. Now, even if you stop the dev server and re-run it, logging in with the same MetaMask account will fetch these preferences from Privy and personalize the app.
+
+![ezgif-5-c93ee556b6](https://user-images.githubusercontent.com/3359083/163305647-51d5efb8-dd6c-4a40-ae10-e321729775fc.gif)
 
 ## Poke around the code 🤓
 

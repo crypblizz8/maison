@@ -83,6 +83,7 @@ export default function Home() {
         {userId && (
           <div>
             <h1>
+            Hey {nameInput ? nameInput : client.session.address.substring(0, 5) + "..." + client.session.address.substring(ethAddress.length - 4) } 👋
               Hey {nameInput ? nameInput : "there"} 👋
             </h1>
             <div style={{ marginTop: '40px' }}>
