@@ -59,6 +59,8 @@ export default function Home() {
 
   /* Writes the user's name and favorite color to Privy and personalizes the app */
   const submitDataToPrivy = async () => {
+
+    
     await client.put(userId, [
       {
         field: "first-name",
@@ -83,8 +85,7 @@ export default function Home() {
         {userId && (
           <div>
             <h1>
-            Hey {nameInput ? nameInput : client.session.address.substring(0, 5) + "..." + client.session.address.substring(ethAddress.length - 4) } 👋
-              Hey {nameInput ? nameInput : "there"} 👋
+              Hey {nameInput ? nameInput : userId.substring(0, 5) + "..." + userId.substring(userId.length - 4) } 👋
             </h1>
             <div style={{ marginTop: '40px' }}>
               <table style={{ margin: 'auto', textAlign: 'right' }}>
