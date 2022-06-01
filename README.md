@@ -5,6 +5,8 @@ This sample Next.js project is designed to help you hit the ground running with 
 * A MetaMask account and the [MetaMask browser extension](https://metamask.io/download/) 🦊. 
 * A Privy account. Email hi@privy.io if you don't have one yet. 
 
+You can check out [a running version of the quickstart](https://demos.privy.io/quickstart).
+
 ## Setting up the Privy Schema
 
 In this sample project, we will collect two simple pieces of user data: their name and their favorite color. In your Privy console, create two fields: 
