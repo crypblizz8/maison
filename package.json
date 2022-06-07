@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@privy-io/privy-browser": "^0.0.1-beta.1",
+    "color": "^4.2.3",
     "next": "latest",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"

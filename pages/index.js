@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { PrivyClient, SiweSession } from '@privy-io/privy-browser'
 import Head from 'next/head';
+import Color from 'color'
 
 // Initialize the Privy client.
 const provider = typeof window !== "undefined" ? window.ethereum : null;
@@ -9,19 +10,18 @@ const client = new PrivyClient({
   session: session,
 });
 
-/* A fun little text styling change depending on your favorite color, thanks
-to https://stackoverflow.com/a/41491220 */
-function pickTextColorBasedOnBgColorSimple(bgColor, lightColor, darkColor) {
-  var color = (bgColor.charAt(0) === '#') ? bgColor.substring(1, 7) : bgColor;
-  var r = parseInt(color.substring(0, 2), 16); // hexToR
-  var g = parseInt(color.substring(2, 4), 16); // hexToG
-  var b = parseInt(color.substring(4, 6), 16); // hexToB
-  return (((r * 0.299) + (g * 0.587) + (b * 0.114)) > 186) ?
-    darkColor : lightColor;
-}
 const LIGHT_TEXT_COLOR = '#FFFFFF'
 const DARK_TEXT_COLOR = '#171717'
 
+/* A fun little text styling change depending on your favorite color. */
+function pickTextColorBasedOnBgColor(bgColor) {
+  try {
+    const color = Color(bgColor)
+    return color.isLight() ? DARK_TEXT_COLOR : LIGHT_TEXT_COLOR;
+  } catch (e) {
+    return DARK_TEXT_COLOR
+  }
+}
 
 export default function Home() {
   // Use React's useState hook to keep track of the signed in Ethereum address and input field values
@@ -67,7 +67,7 @@ export default function Home() {
     if (!state?.favColor) return
 
     document.body.style = `background: ${state.favColor};`;
-    setTextColor(pickTextColorBasedOnBgColorSimple(state.favColor, LIGHT_TEXT_COLOR, DARK_TEXT_COLOR))
+    setTextColor(pickTextColorBasedOnBgColor(state.favColor))
   }, [state])
 
   /* Connect to a MetaMask wallet */
