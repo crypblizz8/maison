@@ -39,15 +39,6 @@ export default function Home() {
     }
   };
 
-  // Update address if page is refreshed.
-  const updateAddress = async () => {
-    const address = await session.address();
-    setAddress(address);
-  };
-  useEffect(() => {
-    updateAddress();
-  }, []);
-
   // Write the user's name, date-of-birth, and favorite color to Privy.
   const putUserData = async () => {
     const [name, birthday, color] = await client.put(address, [
@@ -68,6 +59,15 @@ export default function Home() {
     setDateOfBirth(birthday.text());
     setFavoriteColor(color.text());
   };
+
+  // Update address if page is refreshed.
+  const updateAddress = async () => {
+    const address = await session.address();
+    setAddress(address);
+  };
+  useEffect(() => {
+    updateAddress();
+  }, []);
 
   return (
     <>
