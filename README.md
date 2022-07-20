@@ -1,6 +1,6 @@
 # Privy Quickstart Project
 
-This sample Next.js project is designed to help you hit the ground running with Privy's API. To run this project, you'll need the following:
+This sample Next.js project is designed to help you hit the ground running with Privy's `privy-browser` client. To run this project, you'll need the following:
 
 * The [MetaMask browser extension](https://metamask.io/download/) 🦊 (or other Ethereum wallet provider).
 * A Privy account. [Sign up](https://www.console.privy.io/sign-up) if you don't have one yet!
