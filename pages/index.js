@@ -1,76 +1,25 @@
-import { useEffect, useState } from 'react'
-import { PrivyClient, SiweSession } from '@privy-io/privy-browser'
-import Head from 'next/head';
-import Color from 'color'
+import { PrivyClient, SiweSession } from "@privy-io/privy-browser";
+import { useEffect, useState } from "react";
+import Head from "next/head";
 
 // Initialize the Privy client.
 const provider = typeof window !== "undefined" ? window.ethereum : null;
-const session = new SiweSession(process.env.NEXT_PUBLIC_PRIVY_API_KEY, provider)
+const session = new SiweSession(
+  process.env.NEXT_PUBLIC_PRIVY_API_KEY,
+  provider
+);
 const client = new PrivyClient({
   session: session,
 });
 
-const LIGHT_TEXT_COLOR = '#FFFFFF'
-const DARK_TEXT_COLOR = '#171717'
-
-/* A fun little text styling change depending on your favorite color. */
-function pickTextColorBasedOnBgColor(bgColor) {
-  try {
-    const color = Color(bgColor)
-    return color.isLight() ? DARK_TEXT_COLOR : LIGHT_TEXT_COLOR;
-  } catch (e) {
-    return DARK_TEXT_COLOR
-  }
-}
-
 export default function Home() {
-  // Use React's useState hook to keep track of the signed in Ethereum address and input field values
-  // The state represents the latest information we've pulled from Privy, while
-  // the inputs are tracked locally so we can tell when we different from remote
-  // state.
-  const [state, setState] = useState(null);
-  const [nameInput, setNameInput] = useState("");
-  const [colorInput, setColorInput] = useState("");
-  const [textColor, setTextColor] = useState(DARK_TEXT_COLOR);
+  // Use React's useState hook to keep track of the signed in Ethereum address.
+  const [address, setAddress] = useState(null);
+  const [firstName, setFirstName] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState("");
+  const [favoriteColor, setFavoriteColor] = useState("");
 
-  const fetchDataFromPrivy = async () => {
-    try {
-      // If this is a refresh, we need to pull the address into state
-      const address = await session.address();
-      if (!address) return
-
-      // Fetch user's name and favorite color from Privy
-      const [firstName, favColor] = await client.get(address, ['first-name', 'fav-color']);
-      setState({
-        ...state,
-        userId: address,
-        firstName: firstName?.text(),
-        favColor: favColor?.text()
-      })
-      setNameInput(firstName?.text())
-      setColorInput(favColor?.text())
-
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  // When the page first loads, check if there is a connected wallet and get
-  // user data associated with this wallet from Privy
-  useEffect(() => {
-    fetchDataFromPrivy()
-  }, [])
-
-  // This effect hook is just for fun to style the text based on your favorite
-  // color and makes it easier to read.
-  useEffect(() => {
-    if (!state?.favColor) return
-
-    document.body.style = `background: ${state.favColor};`;
-    setTextColor(pickTextColorBasedOnBgColor(state.favColor))
-  }, [state])
-
-  /* Connect to a MetaMask wallet */
+  // Connect to a MetaMask wallet.
   const connectToWallet = async () => {
     try {
       const { ethereum } = window;
@@ -80,85 +29,126 @@ export default function Home() {
         return;
       }
 
-      await session.authenticate();
-      const userId = await session.address();
-      setState({
-        ...state,
-        userId: userId
-      });
-
-      // After the wallet has been detected, we try to grab data from Privy if
-      // it exists
-      fetchDataFromPrivy()
+      if (!(await session.isAuthenticated())) {
+        await session.authenticate();
+      }
+      const address = await session.address();
+      setAddress(address);
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
-  /* Write the user's name and favorite color to Privy and personalizes the app */
-  const submitDataToPrivy = async () => {
-    const [firstName, favColor] = await client.put(state?.userId, [
+  // Write the user's name, date-of-birth, and favorite color to Privy.
+  const putUserData = async () => {
+    const [name, birthday, color] = await client.put(address, [
       {
         field: "first-name",
-        value: nameInput
+        value: firstName,
       },
       {
-        field: "fav-color",
-        value: colorInput
-      }
+        field: "date-of-birth",
+        value: dateOfBirth,
+      },
+      {
+        field: "favorite-color",
+        value: favoriteColor,
+      },
     ]);
-    setState({
-      ...state,
-      firstName: firstName.text(),
-      favColor: favColor.text(),
-    })
-  }
+    setFirstName(name.text());
+    setDateOfBirth(birthday.text());
+    setFavoriteColor(color.text());
+  };
 
-  // A convenient shortening of a long address
-  const placeholderName = state?.userId?.substring(0, 5) + "..." + state?.userId?.substring(state?.userId?.length - 4)
+  // Update address if page is refreshed.
+  const updateAddress = async () => {
+    const address = await session.address();
+    setAddress(address);
+  };
+  useEffect(() => {
+    updateAddress();
+  }, []);
 
-  // What is rendered on the page
+  // Get user data from Privy.
+  const getUserData = async () => {
+    try {
+      if (!address) return;
+
+      // Fetch user's name and favorite color from Privy
+      const [firstName, dateOfBirth, favoriteColor] = await client.get(
+        address,
+        ["first-name", "date-of-birth", "favorite-color"]
+      );
+      setFirstName(firstName?.text());
+      setDateOfBirth(dateOfBirth?.text());
+      setFavoriteColor(favoriteColor?.text());
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // Get the user data from Privy whenever the wallet address is set.
+  useEffect(() => {
+    getUserData();
+  }, [address]);
+
+  // Set background to user's favorite color.
+  useEffect(() => {
+    if (!favoriteColor) return;
+    document.body.style = `background: ${favoriteColor};`;
+  }, [favoriteColor]);
+
   return (
-    <div>
+    <>
       <Head>
         <title>Privy Quickstart</title>
       </Head>
-      <div style={{ color: textColor }} className="container">
-        {state?.userId && (
-          <>
-            <h1>
-              Hey {state?.firstName ? state?.firstName : placeholderName} 👋
-            </h1>
-            <div>
-              <div className='inputForm'>
-                <label htmlFor='name'>Name</label>
-                <input id="name" onChange={(event) => { setNameInput(event.target.value) }} value={nameInput}
-                  style={{ borderBottomColor: textColor }}
-                  placeholder={placeholderName}
-                />
-                <label htmlFor='color'>Favorite color</label>
-                <input onChange={(event) => { setColorInput(event.target.value) }} value={colorInput}
-                  style={{ borderBottomColor: textColor }} />
-              </div>
-
+      {!address && (
+        <>
+          <div>To get started, connect with MetaMask!</div>
+          <button onClick={connectToWallet}>Connect Wallet</button>
+        </>
+      )}
+      {address && (
+        <div className="container">
+          <h1>
+            Hey {firstName ? firstName : address.substring(0, 5) + "..."} 👋
+          </h1>
+          <div>
+            <div className="inputForm">
+              <label htmlFor="name">Name</label>
+              <input
+                id="name"
+                onChange={(event) => {
+                  setFirstName(event.target.value);
+                }}
+                value={firstName}
+                placeholder={address.substring(0, 5) + "..."}
+              />
+              <label htmlFor="dob">Date of Birth</label>
+              <input
+                id="Date Of Birth"
+                onChange={(event) => {
+                  setDateOfBirth(event.target.value);
+                }}
+                value={dateOfBirth}
+              />
+              <label htmlFor="color">Favorite Color</label>
+              <input
+                onChange={(event) => {
+                  setFavoriteColor(event.target.value);
+                }}
+                value={favoriteColor}
+              />
             </div>
-            <div>
-              <button style={{ fontSize: '1.6rem' }} onClick={submitDataToPrivy} disabled={state.favColor == colorInput && state.firstName == nameInput}>Save with Privy</button>
-            </div>
-          </>
-        )}
-
-        {!state?.userId && (
-          <>
-            <div>
-              To get started, connect with MetaMask!
-            </div>
-            <button onClick={connectToWallet}>
-              Connect Wallet
+          </div>
+          <div>
+            <button style={{ fontSize: "1.6rem" }} onClick={putUserData}>
+              Save with Privy
             </button>
-          </>
-        )}
-      </div>
-    </div >
+          </div>
+        </div>
+      )}
+    </>
   );
 }

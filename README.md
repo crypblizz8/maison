@@ -2,18 +2,24 @@
 
 This sample Next.js project is designed to help you hit the ground running with Privy's API. To run this project, you'll need the following:
 
-* A MetaMask account and the [MetaMask browser extension](https://metamask.io/download/) 🦊. 
-* A Privy account. Email hi@privy.io if you don't have one yet. 
+* The [MetaMask browser extension](https://metamask.io/download/) 🦊 (or other Ethereum wallet provider).
+* A Privy account. [Sign up](https://www.console.privy.io/sign-up) if you don't have one yet!
 
-You can check out [a running version of the quickstart](https://demos.privy.io/quickstart).
+You can also check out [a running version of the quickstart](https://demos.privy.io/quickstart).
 
 ## Setting up the Privy Schema
 
-In this sample project, we will collect two simple pieces of user data: their name and their favorite color. In your Privy console, create two fields: 
-- `first-name`
-- `fav-color`
+In this sample project, we will collect 3 pieces of user data:
+- Name: The user's name (a piece of personally-identifiable info, i.e. PII data).
+- Date of Birth: Another piece of sensitive data.
+- Favorite Color: A toy example of user data used to personalize the user's experience.
 
-For both, give read and write permissions to the "Self" and "Admin" roles. 
+In your Privy console, create three fields corresponding to this user data:
+- `first-name`
+- `date-of-birth`
+- `favorite-color`
+
+For each, we'll keep the default `self` and `admin` read and write permissions.
 
 ## Get your Privy API Keys 🔑
 
@@ -27,7 +33,7 @@ NEXT_PUBLIC_PRIVY_API_KEY=TODO
 
 ## Build and run the dev server ⚒️
 
-That's it! You're ready to build and run the sample project. Run `npm install` to install the project dependencies. Then, use `npm run dev` to run the development server. 
+That's it! You're ready to build and run the sample project. Run `npm install` to install the project dependencies. Then, use `npm run dev` to run the development server.
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
@@ -37,11 +43,11 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - Delete the `package-lock.json` file and `the node_modules` directory in your project
 - Run `npm install` again and try restarting your app.
 
-## Use the app! 
+## Use the app!
 
 In your browser, you should see a "Connect with MetaMask" button. Go ahead and sign in with MetaMask. Once you do, you'll see a simple page that asks for your name and favorite color.
 
-Once you submit that information, head over to the "View Data" section of the Privy console. You'll see that the data has been added! 
+Once you submit that information, head over to the "View Data" section of the Privy console. You'll see that the data has been added!
 
 Back in your browser, you'll also see that if you submitted a valid color, the app background has been personalized to that color. Now, even if you stop the dev server and re-run it, logging in with the same MetaMask account will fetch these preferences from Privy and personalize the app.
 

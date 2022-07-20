@@ -9,14 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@privy-io/privy-browser": "^0.0.1-beta.1",
-    "color": "^4.2.3",
-    "next": "latest",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "@privy-io/privy-browser": "^0.0.1",
+    "next": "12.2.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "eslint": "8.12.0",
-    "eslint-config-next": "12.1.4"
+    "eslint": "8.20.0",
+    "eslint-config-next": "12.2.2"
   }
 }
