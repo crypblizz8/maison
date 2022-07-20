@@ -29,6 +29,8 @@ export default function Home() {
       if (!(await session.isAuthenticated())) {
         await session.authenticate();
       }
+      const address = await session.address();
+      setAddress(address);
     } catch (error) {
       console.error(error);
     }
