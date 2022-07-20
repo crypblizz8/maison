@@ -15,6 +15,9 @@ const client = new PrivyClient({
 export default function Home() {
   // Use React's useState hook to keep track of the signed in Ethereum address.
   const [address, setAddress] = useState(null);
+  const [firstName, setFirstName] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState("");
+  const [favoriteColor, setFavoriteColor] = useState("");
 
   // Connect to a MetaMask wallet.
   const connectToWallet = async () => {
@@ -36,13 +39,87 @@ export default function Home() {
     }
   };
 
+  // Update address if page is refreshed.
+  const updateAddress = async () => {
+    const address = await session.address();
+    setAddress(address);
+  };
+  useEffect(() => {
+    updateAddress();
+  }, []);
+
+  // Write the user's name, date-of-birth, and favorite color to Privy.
+  const putUserData = async () => {
+    const [name, birthday, color] = await client.put(address, [
+      {
+        field: "first-name",
+        value: firstName,
+      },
+      {
+        field: "date-of-birth",
+        value: dateOfBirth,
+      },
+      {
+        field: "favorite-color",
+        value: favoriteColor,
+      },
+    ]);
+    setFirstName(name.text());
+    setDateOfBirth(birthday.text());
+    setFavoriteColor(color.text());
+  };
+
   return (
     <>
       <Head>
         <title>Privy Quickstart</title>
       </Head>
-      <div>To get started, connect with MetaMask!</div>
-      <button onClick={connectToWallet}>Connect Wallet</button>
+      {!address && (
+        <>
+          <div>To get started, connect with MetaMask!</div>
+          <button onClick={connectToWallet}>Connect Wallet</button>
+        </>
+      )}
+      {address && (
+        <div className="container">
+          <h1>
+            Hey {firstName ? firstName : address.substring(0, 5) + "..."} 👋
+          </h1>
+          <div>
+            <div className="inputForm">
+              <label htmlFor="name">Name</label>
+              <input
+                id="name"
+                onChange={(event) => {
+                  setFirstName(event.target.value);
+                }}
+                value={firstName}
+                placeholder={address.substring(0, 5) + "..."}
+              />
+              <label htmlFor="dob">Date of Birth</label>
+              <input
+                id="Date Of Birth"
+                onChange={(event) => {
+                  setDateOfBirth(event.target.value);
+                }}
+                value={dateOfBirth}
+              />
+              <label htmlFor="color">Favorite Color</label>
+              <input
+                onChange={(event) => {
+                  setFavoriteColor(event.target.value);
+                }}
+                value={favoriteColor}
+              />
+            </div>
+          </div>
+          <div>
+            <button style={{ fontSize: "1.6rem" }} onClick={putUserData}>
+              Save with Privy
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 }
