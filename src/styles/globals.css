@@ -1,9 +1,15 @@
 /* Global styling */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css?family=Sorts+Mill+Goudy");
 
 body {
   text-align: center;
-  font-size: 1.8rem;
-  font-family: Arial, sans-serif;
+  /* font-size: 1.8rem; */
+  /* font-family: "Sorts Mill Goudy", Arial, sans-serif; */
+  font-family: "Sorts Mill Goudy";
 }
 
 div.container {
