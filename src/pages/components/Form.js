@@ -34,14 +34,13 @@ export default function Form({
           <label className="flex flex-col rounded-lg border-4 border-dashed w-full h-60 p-10 group text-center">
             <div className="h-full w-full text-center flex flex-col items-center justify-center items-center  ">
               <p className="pointer-none text-gray-500 ">
-                {/* <span className="text-sm">Drag and drop</span> files here <br />{" "}
-                or{" "} */}
-                <a href="" id="">
+                <span className="text-sm">Drag and drop</span> files here <br />{" "}
+                {/* <a href="" id="">
                   <input
                     type="file"
                     //  onChange={(e) => setIndexFile(e.target.files[0])}
                   />
-                </a>{" "}
+                </a>{" "} */}
                 {/* from your computer */}
               </p>
             </div>
