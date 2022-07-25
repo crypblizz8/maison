@@ -79,7 +79,7 @@ export default function Home() {
 
   useEffect(() => {
     // web3calling();
-    console.log("ensDomain", ensDomain);
+    // console.log("ensDomain", ensDomain);
   }, [authenticated, address, ipfsHashData, ensDomain]);
 
   return (
