@@ -6,6 +6,7 @@ import Form from "./components/Form";
 import { useAccount, useConnect, useDisconnect } from "wagmi";
 import axios from "axios";
 import Web3 from "web3";
+import TabContainer from "./components/TabContainer";
 
 const web3 = new Web3(Web3.givenProvider || "ws://localhost:8546");
 
@@ -53,9 +54,8 @@ export default function Home() {
       </h1> */}
 
       <main className="flex flex-row justify-center items-center min-h-[95vh] ">
-        {/* <p>address: {address}</p> */}
-
-        <Form
+        <TabContainer />
+        {/* <Form
           ensDomain={ensDomain}
           setENSDomain={setENSDomain}
           web3calling={web3calling}
@@ -65,7 +65,7 @@ export default function Home() {
           setIPFSHash={setIPFSHash}
           setIndexFile={setIndexFile}
           fileRef={fileInput}
-        />
+        /> */}
       </main>
     </div>
   );
