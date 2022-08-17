@@ -1,8 +1,5 @@
 export default function Form({
-  authPrivy,
-  authenticated,
   setENSDomain,
-  pushPrivyData,
   setIPFSHash,
   ipfsHash,
   ipfsHashData,
@@ -23,7 +20,6 @@ export default function Form({
       </h1>
       <p className="text-2xl ">{pageContent.heading}</p>
       <p className="text-2xl ">{pageContent.subText}</p>
-      {/* <p className="text-2xl ">Connect to an ENS</p> */}
     </div>
   );
 
@@ -33,16 +29,7 @@ export default function Form({
         <div className="flex items-center justify-center w-full">
           <label className="flex flex-col rounded-lg border-4 border-dashed w-full h-60 p-10 group text-center">
             <div className="h-full w-full text-center flex flex-col items-center justify-center items-center  ">
-              <p className="pointer-none text-gray-500 ">
-                <span className="text-sm">Drag and drop</span> files here <br />{" "}
-                {/* <a href="" id="">
-                  <input
-                    type="file"
-                    //  onChange={(e) => setIndexFile(e.target.files[0])}
-                  />
-                </a>{" "} */}
-                {/* from your computer */}
-              </p>
+              <p className="pointer-none text-gray-500 "></p>
             </div>
           </label>
         </div>
@@ -88,23 +75,6 @@ export default function Form({
   const buttonContent = () => {
     return (
       <div>
-        <button
-          onClick={authPrivy}
-          className="my-5 w-full flex justify-center bg-black text-gray-100 p-4  rounded-full tracking-wide font-semibold  focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300"
-        >
-          {!authenticated ? "Auth with Privy" : " Authenticated ✅"}
-        </button>
-
-        {/* <button className="my-5 w-full flex justify-center bg-black text-gray-100 p-4  rounded-full tracking-wide font-semibold  focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300">
-          Upload to IPFS / Pin
-        </button> */}
-        {ipfsHasInput()}
-        <button
-          onClick={pushPrivyData}
-          className="my-5 w-full flex justify-center bg-black text-gray-100 p-4  rounded-full tracking-wide font-semibold  focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300"
-        >
-          {!ipfsHashData ? "Push to Privy" : "Pushed IPFS ✅"}
-        </button>
         {ensInput()}
         <button
           onClick={web3calling}
@@ -112,12 +82,6 @@ export default function Form({
         >
           Link to ENS
         </button>
-        {/* <button
-          disabled
-          className="my-5 w-full flex justify-center bg-black text-gray-100 p-4  rounded-full tracking-wide font-semibold  focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300"
-        >
-          Cermaic ID
-        </button> */}
       </div>
     );
   };
@@ -126,7 +90,6 @@ export default function Form({
       <div className="flex flex-row justify-center items-center">
         <div className="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
           {headingContent}
-          {fileContent()}
           {buttonContent()}
         </div>
       </div>

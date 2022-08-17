@@ -7,16 +7,6 @@ import { useAccount, useConnect, useDisconnect } from "wagmi";
 import axios from "axios";
 import Web3 from "web3";
 
-// Initialize the Privy client.
-const provider = typeof window !== "undefined" ? window.ethereum : null;
-const session = new SiweSession(
-  process.env.NEXT_PUBLIC_PRIVY_API_KEY,
-  provider
-);
-const client = new PrivyClient({
-  session: session,
-});
-
 const web3 = new Web3(Web3.givenProvider || "ws://localhost:8546");
 
 export default function Home() {
@@ -33,33 +23,6 @@ export default function Home() {
 
   // Get file for Pinata.
   const fileInput = useRef();
-
-  const authPrivy = async () => {
-    try {
-      if (!(await session.isAuthenticated())) {
-        await session.authenticate();
-      }
-      setAuthenticated(true);
-    } catch {
-      console.log("error authing");
-    }
-  };
-
-  const pushPrivyData = async () => {
-    try {
-      console.log("ethAddress", address);
-      const ipfsHashData = await client.put(address, [
-        {
-          field: "ipfs-hash",
-          value: ipfsHash,
-        },
-      ]);
-      // console.log("uipfsHashdata setIPFSHashData", ipfsHashData);
-      setIPFSHashData(true);
-    } catch (error) {
-      console.log("Error sending data to Privy: ", error);
-    }
-  };
 
   const web3calling = async () => {
     // alert("ensDomain", ensDomain);
@@ -98,8 +61,6 @@ export default function Home() {
           web3calling={web3calling}
           ipfsHashData={ipfsHashData}
           authenticated={authenticated}
-          authPrivy={authPrivy}
-          pushPrivyData={pushPrivyData}
           ipfsHash={ipfsHash}
           setIPFSHash={setIPFSHash}
           setIndexFile={setIndexFile}
