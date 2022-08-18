@@ -1,12 +1,8 @@
-import { PrivyClient, SiweSession } from "@privy-io/privy-browser";
 import { useEffect, useState, useRef } from "react";
-import Head from "next/head";
-import Header from "./components/Header";
-import Form from "./components/Form";
+
 import { useAccount, useConnect, useDisconnect } from "wagmi";
-import axios from "axios";
+
 import Web3 from "web3";
-import TabContainer from "./components/TabContainer";
 
 const web3 = new Web3(Web3.givenProvider || "ws://localhost:8546");
 
@@ -46,27 +42,26 @@ export default function Home() {
     // console.log("ensDomain", ensDomain);
   }, [authenticated, address, ipfsHashData, ensDomain]);
 
+  const stepsContent = (
+    <div className="pt-6">
+      <ol className="f">
+        <li>1. Choose IPFS or ARWeave</li>
+        <li>2. Drop your build folder</li>
+        <li>3. Deploy</li>
+        <li>4. Receive IPFS Filehas / Arweave permaweb address</li>
+        <li>5. Optional for IPFS: Set ENS ContentHash</li>
+      </ol>
+    </div>
+  );
+
   return (
     <div>
-      <Header />
-      {/* <h1 className="text-8xl bold font-medium text-gray-900 py-4">
-        Decentralized <br /> Front ends
-      </h1> */}
-
-      <main className="flex flex-row justify-center items-center min-h-[95vh] ">
-        <TabContainer />
-        {/* <Form
-          ensDomain={ensDomain}
-          setENSDomain={setENSDomain}
-          web3calling={web3calling}
-          ipfsHashData={ipfsHashData}
-          authenticated={authenticated}
-          ipfsHash={ipfsHash}
-          setIPFSHash={setIPFSHash}
-          setIndexFile={setIndexFile}
-          fileRef={fileInput}
-        /> */}
-      </main>
+      <h1 className="text-4xl text-tornado-green">Maison</h1>
+      <p className="pt-4">
+        Deploy immutable frontends. <br />
+        Privacy and Open source expression is a human right.
+      </p>
+      {stepsContent}
     </div>
   );
 }
