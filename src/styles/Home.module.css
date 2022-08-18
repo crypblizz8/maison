@@ -114,3 +114,8 @@
     flex-direction: column;
   }
 }
+
+.activetab {
+  background-color: #0070f3;
+  color: white;
+}
