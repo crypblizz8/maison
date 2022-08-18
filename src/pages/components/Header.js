@@ -5,7 +5,7 @@ export default function Header() {
   return (
     <>
       <>
-        <meta property="og:url" content="https://zdk-starter-kit.vercel.app/" />
+        {/* <meta property="og:url" content="https://zdk-starter-kit.vercel.app/" /> */}
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Maison" />
         <meta
