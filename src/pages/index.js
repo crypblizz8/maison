@@ -6,16 +6,7 @@ import Form from "./components/Form";
 import { useAccount, useConnect, useDisconnect } from "wagmi";
 import axios from "axios";
 import Web3 from "web3";
-
-// Initialize the Privy client.
-const provider = typeof window !== "undefined" ? window.ethereum : null;
-const session = new SiweSession(
-  process.env.NEXT_PUBLIC_PRIVY_API_KEY,
-  provider
-);
-const client = new PrivyClient({
-  session: session,
-});
+import TabContainer from "./components/TabContainer";
 
 const web3 = new Web3(Web3.givenProvider || "ws://localhost:8546");
 
@@ -33,33 +24,6 @@ export default function Home() {
 
   // Get file for Pinata.
   const fileInput = useRef();
-
-  const authPrivy = async () => {
-    try {
-      if (!(await session.isAuthenticated())) {
-        await session.authenticate();
-      }
-      setAuthenticated(true);
-    } catch {
-      console.log("error authing");
-    }
-  };
-
-  const pushPrivyData = async () => {
-    try {
-      console.log("ethAddress", address);
-      const ipfsHashData = await client.put(address, [
-        {
-          field: "ipfs-hash",
-          value: ipfsHash,
-        },
-      ]);
-      // console.log("uipfsHashdata setIPFSHashData", ipfsHashData);
-      setIPFSHashData(true);
-    } catch (error) {
-      console.log("Error sending data to Privy: ", error);
-    }
-  };
 
   const web3calling = async () => {
     // alert("ensDomain", ensDomain);
@@ -90,21 +54,18 @@ export default function Home() {
       </h1> */}
 
       <main className="flex flex-row justify-center items-center min-h-[95vh] ">
-        {/* <p>address: {address}</p> */}
-
-        <Form
+        <TabContainer />
+        {/* <Form
           ensDomain={ensDomain}
           setENSDomain={setENSDomain}
           web3calling={web3calling}
           ipfsHashData={ipfsHashData}
           authenticated={authenticated}
-          authPrivy={authPrivy}
-          pushPrivyData={pushPrivyData}
           ipfsHash={ipfsHash}
           setIPFSHash={setIPFSHash}
           setIndexFile={setIndexFile}
           fileRef={fileInput}
-        />
+        /> */}
       </main>
     </div>
   );

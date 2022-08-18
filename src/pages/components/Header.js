@@ -17,15 +17,9 @@ export default function Header() {
         <link rel="icon" href="/favicon.ico" />
       </>
 
-      <nav className="bg-white border-gray-200 p-6">
+      <nav className="bg-010504 border-gray-200 p-6">
         <div className=" flex flex-row mx-auto justify-between">
-          <div className="flex">
-            {/* <NextLink href={`/`} passHref key={"home"}>
-              <a>
-                <h1 className="text-2xl font-bold m-0">Maison</h1>
-              </a>
-            </NextLink> */}
-          </div>
+          <div className="flex"></div>
 
           <div className="flex flex-row justify-stretch">
             <ConnectButton />

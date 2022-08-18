@@ -6,10 +6,9 @@
 @import url("https://fonts.googleapis.com/css?family=Sorts+Mill+Goudy");
 
 body {
-  text-align: center;
-  /* font-size: 1.8rem; */
-  /* font-family: "Sorts Mill Goudy", Arial, sans-serif; */
-  font-family: "Sorts Mill Goudy";
+  background-color: #010504;
+  color: white;
+  font-family: "PT Mono", Arial, sans-serif;
 }
 
 div.container {
@@ -18,65 +17,4 @@ div.container {
   align-content: center;
   justify-content: center;
   grid-gap: 25px;
-}
-
-/* Cleaner forms */
-
-div.inputForm {
-  margin: auto;
-  display: grid;
-  grid-template-columns: max-content max-content;
-  align-content: center;
-  justify-content: center;
-  grid-gap: 5px;
-}
-div.inputForm label {
-  text-align: right;
-  font-weight: bold;
-}
-div.inputForm label:after {
-  content: ":";
-}
-
-input {
-  all: unset;
-  border-bottom: 1px solid #171717;
-  width: 12rem;
-  margin: 0 3px;
-  padding: 0 3px;
-  text-align: left;
-}
-
-/* Some basic button styling */
-
-button {
-  display: inline-block;
-  border: none;
-  padding: 1rem 2rem;
-  margin: 1rem;
-  text-decoration: none;
-  background: #171717;
-  color: #ffffff;
-  font-family: Arial, sans-serif;
-  font-size: 1rem;
-  cursor: pointer;
-  text-align: center;
-  transition: background 250ms ease-in-out, transform 150ms ease;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-
-button:hover,
-button:focus {
-  background: #262626;
-}
-
-button:disabled {
-  background: #404040;
-  color: #a3a3a3;
-  cursor: default;
-}
-
-button:active {
-  transform: scale(0.99);
 }
