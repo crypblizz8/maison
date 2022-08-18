@@ -1,6 +1,6 @@
 # Maison - Decentralized Vercel / Immutable Frontends
 
-Initially started during the ETHCC 2022 Paris Hackathon. [First Demo here](https://devpost.com/software/maison-f10xmy).
+Initially started during the ETHCC 2022 Paris Hackathon. <br/> [First Demo here](https://devpost.com/software/maison-f10xmy).
 
 ## Overview
 Want to create a tooling without allows for deployment for static sites through a decentralized stack. I admire companies such as [Liquity](https://www.liquity.org/frontend) who have fully decentralized their front-end. This is a potential direction that protocols can take.
