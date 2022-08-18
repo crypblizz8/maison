@@ -1,18 +1,33 @@
-# Maison - Decentralized Vercel
-![MS](https://user-images.githubusercontent.com/45455218/180645049-22ed294b-badc-4be6-884b-9b7061e852e3.png)
+# Maison - Decentralized Vercel / Immutable Frontends
 
-For ETHCC 2022 Hack. <br/>
-Creating a toolkit to deploy immutable frontends on IPFS.<br/>
-Take Decentralized Front ends cool.<br/>
+Initially started during the ETHCC 2022 Paris Hackathon. [First Demo here](https://devpost.com/software/maison-f10xmy).
 
-## ENV 🔑
-Need a Privy.io KEY for the DB Push
+## Overview
+Want to create a tooling without allows for deployment for static sites through a decentralized stack. I admire companies such as Liquity who have fully decentralized their front-end. This is a potential direction that protocols can take.
 
-Create a `.env.local` file in this repository copied from `.env.local.example` and replace the TODO with your API key from the console.
+<br/> Make Decentralized Front ends cool.<br/>
 
-```
-NEXT_PUBLIC_PRIVY_API_KEY=TODO
-```
+## Stack
+- Storage: IPFS & Arweave
+- Domains: ENS
+- Data: TBD
+
+
+## ToDo List 🏗
+
+- [x] Intital V1
+- [x] New designs for v2
+- [ ] End to End IPFS Deployment
+- [ ] Figure out the deploy / VM Container
+- [x] End to End ArWeave Deployment
+- [ ] Continous Deployment
+- [ ] Integerate a web3/decentralized DB stack.
+
+
+## Ideal Stack / Pipeline
+
+![diagram](https://user-images.githubusercontent.com/45455218/185377499-ac8cdb80-b97c-401f-8a4f-449e85fec013.jpg)
+
 
 ## Build and run the dev server ⚒️
 
@@ -21,12 +36,4 @@ NEXT_PUBLIC_PRIVY_API_KEY=TODO
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 
-## Future / ToDo List 🔑
-- Fix ENS SetContentHash
-- Add Build folder
-- Create an container / VM to handle the builds on a server
-- IPFS Hash pin through Pinata instead of Alchemy
 
-## Other future integration considerations
-- Ceramic
-- ARWeave
