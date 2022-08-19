@@ -10,7 +10,7 @@ import {
 import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
-import Layout from "./components/Layout";
+import Layout from "../components/Layout";
 
 const { chains, provider, webSocketProvider } = configureChains(
   [

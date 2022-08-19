@@ -1,8 +1,6 @@
 import React from "react";
-import NextLink from "next/link";
-
-import styles from "../../styles/Home.module.css";
-import Header from "../components/Header";
+import styles from "../styles/Home.module.css";
+import Header from "./Header";
 import Tabs from "./Tab";
 
 const Layout = ({ children }) => {

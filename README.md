@@ -12,7 +12,6 @@ Want to create a tooling without allows for deployment for static sites through 
 - Domains: ENS
 - Data: TBD
 
-
 ## ToDo List 🏗
 P1:
 - [ ] Start working on the ARWeave Integration
@@ -43,20 +42,11 @@ Finished:
 - [x] RainbowKit Button
 - [x] Route / tab State
 
-
-
-
-
-
-
-
 ## Ideal Stack / Pipeline
-
 ![diagram](https://user-images.githubusercontent.com/45455218/185377499-ac8cdb80-b97c-401f-8a4f-449e85fec013.jpg)
 
 
 ## Build and run the dev server ⚒️
-
 `yarn` + `yarn dev` 
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
