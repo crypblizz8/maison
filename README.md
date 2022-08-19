@@ -14,14 +14,40 @@ Want to create a tooling without allows for deployment for static sites through 
 
 
 ## ToDo List 🏗
+P1:
+- [ ] Start working on the ARWeave Integration
+- [ ] Rework IPFS for static page deployment
 
+P2:
+- [ ] Change Radicle --> Other
+- [ ] Add all the Frontend resources
+
+P3:
+- [ ] Fix Min Height
+
+MVP Release:
+- [ ] Test with 5 - 10 people
+- [ ] Tweet out the prototype
+
+Nice to have/ future:
+- [ ] Integerate a web3/decentralized DB stack.
+- [ ] Continous Deployment
+
+Finished:
 - [x] Intital V1
 - [x] New designs for v2
-- [ ] End to End IPFS Deployment
-- [ ] Figure out the deploy / VM Container
-- [x] End to End ArWeave Deployment
-- [ ] Continous Deployment
-- [ ] Integerate a web3/decentralized DB stack.
+- [x] Figure out deployment
+- [x] Figure out Layout
+- [x] RainbowKit Button
+- [x] Add Radicle / Other
+- [x] RainbowKit Button
+- [x] Route / tab State
+
+
+
+
+
+
 
 
 ## Ideal Stack / Pipeline
