@@ -3,12 +3,11 @@ import Web3 from "web3";
 
 export default function Radicle() {
   return (
-    <div>
-      <h1 className="text-4xl text-tornado-green">Radicle Deployment</h1>
+    <div className="max-w-md">
+      <h1 className="text-4xl text-tornado-green ">Other Resources</h1>
       <p className="pt-4">
-        Deploy on IPFS
-        <br />
-        Privacy and Open source expression is a human right.
+        These are additional resources to help you look into decentralized
+        front-ends.
       </p>
     </div>
   );

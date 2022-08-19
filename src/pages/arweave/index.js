@@ -3,8 +3,8 @@ import Web3 from "web3";
 
 export default function Arweave() {
   return (
-    <div>
-      <h1 className="text-4xl text-tornado-green">Arweave Deployment</h1>
+    <div className="max-w-md">
+      <h1 className="text-4xl text-tornado-green">Arweave</h1>
       <p className="pt-4">
         Deploy on IPFS
         <br />

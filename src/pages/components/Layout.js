@@ -10,9 +10,9 @@ const Layout = ({ children }) => {
     <>
       <Header />
       <main className={styles.main}>
-        <div>
+        <div className="max-w-fit p-4	">
           <Tabs />
-          <div className="border border-solid  border-tornado-green min-w-min min-h-200 w-max  h-1/2 p-8 flex items-center align-center">
+          <div className="border border-solid border-tornado-green p-4 flex items-center align-center">
             {children}
           </div>
         </div>

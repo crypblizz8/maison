@@ -3,7 +3,7 @@ import Web3 from "web3";
 
 export default function IPFS() {
   return (
-    <div>
+    <div className="max-w-md">
       <h1 className="text-4xl text-tornado-green">IPFS Deployment</h1>
       <p className="pt-4">
         Deploy on IPFS
