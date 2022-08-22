@@ -14,8 +14,10 @@ Want to create a tooling without allows for deployment for static sites through 
 
 ## ToDo List 🏗
 P1:
-- [ ] Start working on the ARWeave Integration
-- [ ] Rework IPFS for static page deployment
+- [ ] ARWeave Static File Upload
+- [ ] Bundlr Usage for ARWeave Payment.
+- [ ] IPFS Static File Upload
+- [ ] Docker Usage
 
 P2:
 - [ ] Change Radicle --> Other
@@ -23,6 +25,7 @@ P2:
 
 P3:
 - [ ] Fix Min Height
+- [ ] Looks like a different hex color on larger monitor
 
 MVP Release:
 - [ ] Test with 5 - 10 people

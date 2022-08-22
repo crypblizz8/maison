@@ -10,6 +10,8 @@ export default function IPFS() {
         <br />
         Privacy and Open source expression is a human right.
       </p>
+      <p>Lets get started:</p>
+    
     </div>
   );
 }
