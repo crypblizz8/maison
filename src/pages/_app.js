@@ -11,15 +11,10 @@ import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 import Layout from "../components/Layout";
+import BundlrContextProvider from "../state/BundlrContext";
 
 const { chains, provider, webSocketProvider } = configureChains(
-  [
-    chain.mainnet,
-    chain.rinkeby,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === "true"
-      ? [chain.goerli, chain.kovan, chain.rinkeby, chain.ropsten]
-      : []),
-  ],
+  [chain.polygonMumbai],
   [
     alchemyProvider({ alchemyId: process.env.NEXT_ALCHEMY_ID }),
     publicProvider(),
@@ -69,7 +64,9 @@ function MyApp({ Component, pageProps }) {
         })}
       >
         <Layout>
-          <Component {...pageProps} />
+          <BundlrContextProvider>
+            <Component {...pageProps} />
+          </BundlrContextProvider>
         </Layout>
       </RainbowKitProvider>
     </WagmiConfig>

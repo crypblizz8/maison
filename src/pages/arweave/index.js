@@ -1,10 +1,16 @@
 import { useEffect, useState, useRef } from "react";
-import arweave from "arweave";
+import Arweave from "arweave";
+import { JWKInterface } from "arweave/node/lib/wallet";
+import Transaction from "arweave/node/lib/transaction";
+// import fs from "fs";
+import FileUploader from "../../components/FileUploader";
+import FundWallet from "../../components/FundWallet";
+import InitializeBundlr from "../../components/InitializeBundlr";
 
-export default function Arweave() {
-  useEffect(() => {
-    // const arweave = arweave.init({});
-  }, []);
+export default function Index() {
+  const arweave = Arweave.init({});
+
+  useEffect(() => {}, []);
 
   // const arweave = Arweave.init({
   //   host: "127.0.0.1",
@@ -16,8 +22,13 @@ export default function Arweave() {
   1. Create a tx
   2. Log tx
 
-
   */
+
+  const handleFileInput = (e) => {
+    e.preventDefault();
+    const file = e.target.files[0];
+    console.log(file);
+  };
 
   return (
     <div className="max-w-md">
@@ -29,11 +40,13 @@ export default function Arweave() {
       </p>
       <br />
       <p>Lets get started:</p>
-      <ul>
-        <li>1. Upload files</li>
-        <li>2. Pay for ARWeave Tx</li>
-        <li>3. Access ARWeave XX</li>
-        <li>4. Link to ArNS</li>
+
+      <InitializeBundlr />
+      <FundWallet />
+      <FileUploader />
+
+      <ul className="mt-2 mb-2">
+        <li>5. Link to ArNS</li>
       </ul>
     </div>
   );
