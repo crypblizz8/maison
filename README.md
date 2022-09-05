@@ -46,7 +46,7 @@ Finished:
 - [x] Route / tab State
 
 ## Ideal Stack / Pipeline
-![diagram](https://user-images.githubusercontent.com/45455218/185377499-ac8cdb80-b97c-401f-8a4f-449e85fec013.jpg)
+![DiagramTwo](https://user-images.githubusercontent.com/45455218/188431745-a8bd2a3d-3258-4f7a-bbdd-f13052fce67a.jpg)
 
 
 ## Build and run the dev server ⚒️
